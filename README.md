@@ -9,13 +9,6 @@
 </div>
 
 
-<div align="center">
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Language](https://img.shields.io/github/languages/top/redis-developer/financial-vss)
-![GitHub last commit](https://img.shields.io/github/last-commit/redis-developer/financial-vss)
-
-</div>
-
 
 *A detailed notebook to teach semantic search and RAG patterns over public financial 10k documents with different Redis clients and integrations including: [redis-py](https://redis-py.readthedocs.io/en/stable/index.html), [redisvl](https://redisvl.com), and [langchain](https://python.langchain.com/docs/integrations/vectorstores/redis).*
 
