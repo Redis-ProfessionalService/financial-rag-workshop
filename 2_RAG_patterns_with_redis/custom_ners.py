@@ -37,7 +37,7 @@ def get_entities(query):
         entities.append({
             "label": ent.label_,
             "text": ent.text,
-            "id": ent.ent_id
+            "id": ent.ent_id_
         })
     return entities
 
