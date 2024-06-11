@@ -1,9 +1,5 @@
 import yaml
 
-
-def concat_docs(docs):
-    return "\n\n".join(docs)
-
 def format_docs(docs):
     clean_docs = []
     for doc in docs:
