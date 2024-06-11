@@ -1,0 +1,17 @@
+{
+    "Ticker": "AAPL",
+    "Name": "APPLE INC",
+    "Sector": "Information Technology",
+    "Asset Class": "Equity",
+    "Market Value": "559,365,151.11",
+    "Weight (%)": 5.16,
+    "Notional Value": "559,365,151.11",
+    "Shares": "4,305,127.00",
+    "Price": "129.93",
+    "Location": "United States",
+    "Exchange": "NASDAQ",
+    "Currency": "USD",
+    "FX Rate": 1.0,
+    "Market Currency": "USD",
+    "Accrual Date": "-"
+}

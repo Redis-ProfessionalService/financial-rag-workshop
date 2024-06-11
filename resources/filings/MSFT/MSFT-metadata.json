@@ -1,0 +1,17 @@
+{
+    "Ticker": "MSFT",
+    "Name": "MICROSOFT CORP",
+    "Sector": "Information Technology",
+    "Asset Class": "Equity",
+    "Market Value": "513,917,712.42",
+    "Weight (%)": 4.74,
+    "Notional Value": "513,917,712.42",
+    "Shares": "2,142,931.00",
+    "Price": "239.82",
+    "Location": "United States",
+    "Exchange": "NASDAQ",
+    "Currency": "USD",
+    "FX Rate": 1.0,
+    "Market Currency": "USD",
+    "Accrual Date": "-"
+}

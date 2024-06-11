@@ -1,0 +1,47 @@
+version: '0.1.0'
+
+index:
+  name: langchain
+  prefix: chunk
+  storage_type: hash
+
+fields:
+  - name: chunk_id
+    type: tag
+  - name: source_doc
+    type: tag
+  - name: doc_type
+    type: tag
+  - name: content
+    type: text
+  - name: ticker
+    type: tag
+  - name: company_name
+    type: tag
+  - name: sector
+    type: tag  
+  - name: asset_class
+    type: tag              
+  - name: location
+    type: tag
+  - name: exchange
+    type: tag
+  - name: currency
+    type: tag
+  - name: market_value
+    type: numeric
+  - name: weight
+    type: numeric
+  - name: notional_value
+    type: numeric
+  - name: shares
+    type: numeric
+  - name: price
+    type: numeric             
+  - name: text_embedding
+    type: vector
+    attrs:
+      dims: 384
+      type: float32
+      algorithm: flat
+      distance_metric: cosine

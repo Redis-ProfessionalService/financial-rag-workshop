@@ -1,0 +1,17 @@
+{
+    "Ticker": "ORCL",
+    "Name": "ORACLE CORP",
+    "Sector": "Information Technology",
+    "Asset Class": "Equity",
+    "Market Value": "35,783,728.50",
+    "Weight (%)": 0.33,
+    "Notional Value": "35,783,728.50",
+    "Shares": "437,775.00",
+    "Price": "81.74",
+    "Location": "United States",
+    "Exchange": "New York Stock Exchange Inc.",
+    "Currency": "USD",
+    "FX Rate": 1.0,
+    "Market Currency": "USD",
+    "Accrual Date": "-"
+}

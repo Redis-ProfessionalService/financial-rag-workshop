@@ -1,0 +1,14 @@
+python-dotenv
+tiktoken
+langchain
+langchain-community
+unstructured[pdf]
+sentence-transformers
+pandas
+pdf2image
+spacy
+langgraph
+redis
+redisvl
+langchain-openai
+openai
