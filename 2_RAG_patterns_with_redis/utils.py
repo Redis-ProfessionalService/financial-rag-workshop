@@ -2,7 +2,7 @@ import yaml
 
 
 def concat_docs(docs):
-    return "\n\n".join(doc.page_content for doc in docs)
+    return "\n\n".join(docs)
 
 def format_docs(docs):
     clean_docs = []
