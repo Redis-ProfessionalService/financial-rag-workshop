@@ -12,16 +12,18 @@ def build_custom_sec_ner():
         ent_parts = str(ent).strip().split(" ")
         for part in ent_parts:
             pattern_list.append({"LOWER": str(part).lower()})
+            pattern_list.append({"UPPER": str(part).lower()})
+            pattern_list.append({str(part)})
         return pattern_list
 
     for ticker in list(sec_data.keys()):
         if len(sec_data[ticker]["metadata_file"]) > 0:
             metadata = load_json_metadata(sec_data[ticker]["metadata_file"][0])
-            patterns.append({"label": "ticker", "pattern": get_patterns(metadata['ticker'])})
-            patterns.append({"label": "company_name", "pattern": get_patterns(metadata['company_name'])})
-            patterns.append({"label": "sector", "pattern": get_patterns(metadata['sector'])})
-            patterns.append({"label": "asset_class", "pattern": get_patterns(metadata['asset_class'])})
-            patterns.append({"label": "exchange", "pattern": get_patterns(metadata['exchange'])})
+            patterns.append({"label": "ticker", "pattern": get_patterns(metadata['ticker']), "id": metadata['ticker']})
+            patterns.append({"label": "company_name", "pattern": get_patterns(metadata['company_name']), "id": metadata['company_name']})
+            patterns.append({"label": "sector", "pattern": get_patterns(metadata['sector']), "id": metadata['sector']})
+            patterns.append({"label": "asset_class", "pattern": get_patterns(metadata['asset_class']), "id": metadata['asset_class']})
+            patterns.append({"label": "exchange", "pattern": get_patterns(metadata['exchange']) , "id": metadata['exchange']})
         ruler.add_patterns(patterns)
 
 
@@ -36,7 +38,8 @@ def get_entities(query):
     for ent in doc.ents:
         entities.append({
             "label": ent.label_,
-            "text": ent.text
+            "text": ent.text,
+            "id": ent.ent_id
         })
     return entities
 
@@ -44,7 +47,7 @@ def get_entities(query):
 def get_redis_filters(query):
     filters = []
     for ent in get_entities(query):
-        value = "{" + f"{ent['text']}" + "}"
+        value = "{" + f"{ent['id']}" + "}"
         filters.append(f"@{ent['label']}:{value}")
     if len(filters) == 0:
         return None

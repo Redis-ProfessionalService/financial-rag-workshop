@@ -13,8 +13,8 @@ dir_path = os.getcwd()
 parent_directory = os.path.dirname(dir_path)
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 os.environ["ROOT_DIR"] = parent_directory
-print(dir_path)
-print(parent_directory)
+#print(dir_path)
+#print(parent_directory)
 
 filings_data_path = f"{parent_directory}/resources/filings"
 earning_calls_data_path = f"{parent_directory}/resources/earning_calls"
