@@ -12,8 +12,6 @@ def build_custom_sec_ner():
         ent_parts = str(ent).strip().split(" ")
         for part in ent_parts:
             pattern_list.append({"LOWER": str(part).lower()})
-            pattern_list.append({"UPPER": str(part).lower()})
-            pattern_list.append({str(part)})
         return pattern_list
 
     for ticker in list(sec_data.keys()):
