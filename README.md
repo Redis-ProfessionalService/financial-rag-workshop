@@ -40,8 +40,8 @@ In particular, we use `sentence-transformers--all-MiniLM-L6-v2` which we have ma
 folder of this repo.
 
 ### Notes
-(1) It must be noted much of the quality of the results depends very much on the embedding model that is used 
-for representing the data in your domain. Here we use a very simple embedding model that represents text 
+(1) It must be noted that much of the quality of the results depends very much on the embedding model that is used 
+for representing the data in vector space in your domain. Here we use a very simple embedding model that represents text 
 in a vector of `384` dimensions. Other BERT-driven embedding models would try to capture more nuances of text in `768` 
 dimensions. And OpenAI embedding models are in `1536` dimension. We recommend using a proper domain-specific 
 embedding model for your use case for better results.
