@@ -24,6 +24,20 @@ So make sure you install Ollama and pull `llama3` model on your local machine wh
 (1) Download [Ollama app](https://ollama.ai/) and install.
 (2) run `ollama pull llama3`
 
+#### Local Embedding models
+
+Throughout the notebooks in this repo, we are using `SentenceTransformerEmbeddings` and to be able to run it locally, 
+we specify a local cache folder for `SentenceTransformer` models. 
+If you already downloaded the models in a local file system, set this folder in the notebook via
+
+```code
+#setting the local downloaded sentence transformer models folder
+os.environ["TRANSFORMERS_CACHE"] = f"{path_to_your_local_cache_folder}/models"
+```
+
+otherwise the underlying library tries to download the models from HuggingFace if this folder if not available locally.
+In particular, we use `sentence-transformers--all-MiniLM-L6-v2` which we have made it available locally in the `models` 
+folder of this repo.
 
 
 
