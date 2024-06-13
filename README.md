@@ -47,8 +47,8 @@ dimensions. And OpenAI embedding models are in `1536` dimension. We recommend us
 embedding model for your use case for better results.
 
 (2) The same advice applies for the LLMs you use for specific tasks. Here we use a general llama3 model for generation 
-and tasks that we need. But for better results in a specific domain, it is recommended to fine-tune or your models 
-or even train your own foundational models if you have the resources to do so. A successful, foundational model 
+and tasks that we need. But for better results in a specific domain, it is recommended to fine-tune or
+even train your own foundational models if you have the resources to do so. A successful, foundational model 
 in the finance space was [BloombergGPT](https://arxiv.org/abs/2303.17564).  
 
 (3) And finally, be advised that we have used the base `llama3` LLM for all of our tasks, including some classification 
