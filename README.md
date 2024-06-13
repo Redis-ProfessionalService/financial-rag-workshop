@@ -24,6 +24,40 @@ So make sure you install Ollama and pull `llama3` model on your local machine wh
 (1) Download [Ollama app](https://ollama.ai/) and install.
 (2) run `ollama pull llama3`
 
+#### Local Embedding models
+
+Throughout the notebooks in this repo, we are using `SentenceTransformerEmbeddings` and to be able to run it locally, 
+we specify a local cache folder for `SentenceTransformer` models. 
+If you already downloaded the models in a local file system, set this folder in the notebook via
+
+```code
+#setting the local downloaded sentence transformer models folder
+os.environ["TRANSFORMERS_CACHE"] = f"{path_to_your_local_cache_folder}/models"
+```
+
+otherwise the underlying library tries to download the models from HuggingFace if this folder is not available locally.
+In particular, we use `sentence-transformers--all-MiniLM-L6-v2` which we have made it available locally in the `models` 
+folder of this repo.
+
+### Notes
+(1) It must be noted much of the quality of the results depends very much on the embedding model that is used 
+for representing the data in your domain. Here we use a very simple embedding model that represents text 
+in a vector of `384` dimensions. Other BERT-driven embedding models would try to capture more nuances of text in `768` 
+dimensions. And OpenAI embedding models are in `1536` dimension. We recommend using a proper domain-specific 
+embedding model for your use case for better results.
+
+(2) The same advice applies for the LLMs you use for specific tasks. Here we use a general llama3 model for generation 
+and tasks that we need. But for better results in a specific domain, it is recommended to fine-tune or your models 
+or even train your own foundational models if you have the resources to do so. A successful, foundational model 
+in the finance space was [BloombergGPT](https://arxiv.org/abs/2303.17564).  
+
+(3) And finally, be advised that we have used the base `llama3` LLM for all of our tasks, including some classification 
+and planning for next action and not just only generation part of the RAG patterns. 
+At this point in the evolution of LLMs this is not advised.
+
+<img src="assets/GenAI-usecases.png" alt="GenAI" width="400"/>
+
+
 
 
 
