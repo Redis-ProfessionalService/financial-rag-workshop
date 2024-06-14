@@ -16,7 +16,7 @@ def get_llm():
         return llm
 
 
-def get_chat_llm(temperature=0, format=None, ):
+def get_chat_llm(temperature=0, format=None):
     if USE_VLLM:
         print('Using VLLM')
         raise NotImplemented("VLLM not implemented yet. Add your VLLM code for Chat LLM here")
