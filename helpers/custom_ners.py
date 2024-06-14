@@ -1,6 +1,6 @@
 from spacy.lang.en import English
-from ingestion import load_json_metadata
-from ingestion import get_sec_data
+from helpers.ingestion import load_json_metadata
+from helpers.ingestion import get_sec_data
 
 # a simple toy rule-based NER just to demonstrate the use-case
 def build_custom_sec_ner():

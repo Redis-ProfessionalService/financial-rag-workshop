@@ -1,10 +1,41 @@
 import yaml
+from langchain_community.llms import Ollama
+from langchain_community.chat_models import ChatOllama
+
+USE_VLLM = False
+LOCAL_OLLAMA_MODEL = 'llama3'  #'llama3-8b-instruct'
+
+
+def get_llm():
+    if USE_VLLM:
+        print('Using VLLM')
+        raise NotImplemented("VLLM not implemented yet. Add your VLLM code here")
+    #We default to Ollama
+    else:
+        llm = Ollama(model=LOCAL_OLLAMA_MODEL)
+        return llm
+
+
+def get_chat_llm(temperature=0, format=None, ):
+    if USE_VLLM:
+        print('Using VLLM')
+        raise NotImplemented("VLLM not implemented yet. Add your VLLM code for Chat LLM here")
+    #We default to Ollama
+    else:
+        if format is None:
+            chat_llm = ChatOllama(model=LOCAL_OLLAMA_MODEL, temperature=temperature)
+            return chat_llm
+        else:
+            chat_llm = ChatOllama(model=LOCAL_OLLAMA_MODEL, temperature=temperature, format=format)
+            return chat_llm
+
 
 def format_docs(docs):
     clean_docs = []
     for doc in docs:
         clean_docs.append(str(doc.page_content).replace("\n", " "))
     return clean_docs
+
 
 def create_langchain_schemas_from_redis_schema(redis_yschema):
     with open(redis_yschema, "r") as yschema:
