@@ -39,6 +39,12 @@ otherwise the underlying library tries to download the models from HuggingFace i
 In particular, we use `sentence-transformers--all-MiniLM-L6-v2` which we have made it available locally in the `models` 
 folder of this repo.
 
+#### Provide NLTK Data
+in the `.env` file please add the full path for `NLTK_DATA` and point it to the directory that we have provided in the 
+`{path_to_this_repo}models/nltk_data`
+
+
+
 ### Notes
 (1) It must be noted that much of the quality of the results depends very much on the embedding model that is used 
 for representing the data in vector space in your domain. Here we use a very simple embedding model that represents text 
