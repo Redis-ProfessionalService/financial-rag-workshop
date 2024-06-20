@@ -17,12 +17,32 @@
 
 ### Installation
 
-#### Local LLM
+#### Local Ollama LLM
 All the notebooks here runs on local LLMs served by Ollama, and we specifically use `llama3` model in all of our examples. 
 So make sure you install Ollama and pull `llama3` model on your local machine where you run these notebooks.
 
 (1) Download [Ollama app](https://ollama.ai/) and install.
 (2) run `ollama pull llama3`
+
+and then set the `.env` variables accordingly.
+
+#### Using VLLM server
+
+To be able to use VLLM you must install the VLLM server installed 
+on the local machine (or in another machine that these notebooks can access to)
+please refer to [VLLM documentation](https://docs.vllm.ai/en/stable/serving/deploying_with_docker.html) to do so, and then set the `.env` variables accordingly.
+
+as an example we have tested this set up using docker 
+by running this docker command on the same instance that we ran the notebook:
+```
+docker run --runtime nvidia --gpus all \
+    -v ~/.cache/huggingface:/root/.cache/huggingface \
+    --env "HUGGING_FACE_HUB_TOKEN=hf_token" \
+    -p 8000:8000 \
+    --ipc=host \
+    vllm/vllm-openai:latest \
+    --model meta-llama/Meta-Llama-3-8B-Instruct
+```
 
 #### Local Embedding models
 

@@ -2,67 +2,51 @@ import yaml
 from langchain_community.llms import Ollama
 from langchain_community.chat_models import ChatOllama
 from langchain_community.llms import VLLMOpenAI
-from langchain_core.messages import HumanMessage, SystemMessage
-from langchain_core.prompts.chat import (
-    ChatPromptTemplate,
-    HumanMessagePromptTemplate,
-    SystemMessagePromptTemplate,
-)
 from langchain_openai import ChatOpenAI
-USE_VLLM = False
-LOCAL_OLLAMA_MODEL = 'llama3'
-LOCAL_VLLM_MODEL = "meta-llama/Meta-Llama-3-8B-Instruct"
-VLLM_URL = "http://localhost:8000/v1"
-
-"""
-To be able to use VLLM you must have the VLLM server installed on the local machine in this setup
-please refer to documentation in ReadMe on how to dod so:
-for example:
-
-docker run --runtime nvidia --gpus all \
-    -v ~/.cache/huggingface:/root/.cache/huggingface \
-    --env "HUGGING_FACE_HUB_TOKEN=hf_token" \
-    -p 8000:8000 \
-    --ipc=host \
-    vllm/vllm-openai:latest \
-    --model meta-llama/Meta-Llama-3-8B-Instruct
-"""
 
 
-def get_llm():
-    if USE_VLLM:
+def get_llm(local_llm_engine='vllm',
+            vllm_url="http://localhost:8000/v1",
+            vllm_model="meta-llama/Meta-Llama-3-8B-Instruct",
+            ollama_model='llama3',
+            ):
+    if local_llm_engine == 'vllm':
         vllm = VLLMOpenAI(
             openai_api_key="EMPTY",
-            openai_api_base=VLLM_URL,
-            model_name=LOCAL_VLLM_MODEL,
+            openai_api_base=vllm_url,
+            model_name=vllm_model,
             model_kwargs={"stop": ["."]},
         )
         return vllm
     #We default to Ollama
     else:
-        llm = Ollama(model=LOCAL_OLLAMA_MODEL)
+        llm = Ollama(model=ollama_model)
         return llm
 
 
-def get_chat_llm(temperature=0, format=None):
-    if USE_VLLM:
-        inference_server_url = VLLM_URL
+def get_chat_llm(local_llm_engine='vllm',
+                 vllm_url="http://localhost:8000/v1",
+                 vllm_model="meta-llama/Meta-Llama-3-8B-Instruct",
+                 ollama_model='llama3',
+                 temperature=0,
+                 format=None):
+    if local_llm_engine == 'vllm':
+        inference_server_url = vllm_url
 
         chatVLLM = ChatOpenAI(
-            model=LOCAL_VLLM_MODEL,
+            model=vllm_model,
             openai_api_key="EMPTY",
             openai_api_base=inference_server_url,
-            max_tokens=5,
             temperature=temperature,
         )
         return chatVLLM
     #We default to Ollama
     else:
         if format is None:
-            chat_llm = ChatOllama(model=LOCAL_OLLAMA_MODEL, temperature=temperature)
+            chat_llm = ChatOllama(model=ollama_model, temperature=temperature)
             return chat_llm
         else:
-            chat_llm = ChatOllama(model=LOCAL_OLLAMA_MODEL, temperature=temperature, format=format)
+            chat_llm = ChatOllama(model=ollama_model, temperature=temperature, format=format)
             return chat_llm
 
 
