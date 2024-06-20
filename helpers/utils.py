@@ -12,6 +12,7 @@ from langchain_openai import ChatOpenAI
 USE_VLLM = False
 LOCAL_OLLAMA_MODEL = 'llama3'
 LOCAL_VLLM_MODEL = "meta-llama/Meta-Llama-3-8B-Instruct"
+VLLM_URL = "http://localhost:8000/v1"
 
 """
 To be able to use VLLM you must have the VLLM server installed on the local machine in this setup
@@ -25,7 +26,6 @@ docker run --runtime nvidia --gpus all \
     --ipc=host \
     vllm/vllm-openai:latest \
     --model meta-llama/Meta-Llama-3-8B-Instruct
-    
 """
 
 
@@ -33,7 +33,7 @@ def get_llm():
     if USE_VLLM:
         vllm = VLLMOpenAI(
             openai_api_key="EMPTY",
-            openai_api_base="http://localhost:8000/v1",
+            openai_api_base=VLLM_URL,
             model_name=LOCAL_VLLM_MODEL,
             model_kwargs={"stop": ["."]},
         )
@@ -46,7 +46,7 @@ def get_llm():
 
 def get_chat_llm(temperature=0, format=None):
     if USE_VLLM:
-        inference_server_url = "http://localhost:8000/v1"
+        inference_server_url = VLLM_URL
 
         chatVLLM = ChatOpenAI(
             model=LOCAL_VLLM_MODEL,
