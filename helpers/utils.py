@@ -1,15 +1,43 @@
 import yaml
 from langchain_community.llms import Ollama
 from langchain_community.chat_models import ChatOllama
-
+from langchain_community.llms import VLLMOpenAI
+from langchain_core.messages import HumanMessage, SystemMessage
+from langchain_core.prompts.chat import (
+    ChatPromptTemplate,
+    HumanMessagePromptTemplate,
+    SystemMessagePromptTemplate,
+)
+from langchain_openai import ChatOpenAI
 USE_VLLM = False
-LOCAL_OLLAMA_MODEL = 'llama3'  #'llama3-8b-instruct'
+LOCAL_OLLAMA_MODEL = 'llama3'
+LOCAL_VLLM_MODEL = "meta-llama/Meta-Llama-3-8B-Instruct"
+
+"""
+To be able to use VLLM you must have the VLLM server installed on the local machine in this setup
+please refer to documentation in ReadMe on how to dod so:
+for example:
+
+docker run --runtime nvidia --gpus all \
+    -v ~/.cache/huggingface:/root/.cache/huggingface \
+    --env "HUGGING_FACE_HUB_TOKEN=hf_token" \
+    -p 8000:8000 \
+    --ipc=host \
+    vllm/vllm-openai:latest \
+    --model meta-llama/Meta-Llama-3-8B-Instruct
+    
+"""
 
 
 def get_llm():
     if USE_VLLM:
-        print('Using VLLM')
-        raise NotImplemented("VLLM not implemented yet. Add your VLLM code here")
+        vllm = VLLMOpenAI(
+            openai_api_key="EMPTY",
+            openai_api_base="http://localhost:8000/v1",
+            model_name=LOCAL_VLLM_MODEL,
+            model_kwargs={"stop": ["."]},
+        )
+        return vllm
     #We default to Ollama
     else:
         llm = Ollama(model=LOCAL_OLLAMA_MODEL)
@@ -18,8 +46,16 @@ def get_llm():
 
 def get_chat_llm(temperature=0, format=None):
     if USE_VLLM:
-        print('Using VLLM')
-        raise NotImplemented("VLLM not implemented yet. Add your VLLM code for Chat LLM here")
+        inference_server_url = "http://localhost:8000/v1"
+
+        chatVLLM = ChatOpenAI(
+            model=LOCAL_VLLM_MODEL,
+            openai_api_key="EMPTY",
+            openai_api_base=inference_server_url,
+            max_tokens=5,
+            temperature=temperature,
+        )
+        return chatVLLM
     #We default to Ollama
     else:
         if format is None:
