@@ -26,7 +26,7 @@ def get_llm(local_llm_engine='vllm',
         return llm
 
 
-def get_chat_llm(local_llm_engine='ollama',
+def get_chat_llm(local_llm_engine='vllm',
                  vllm_url="http://localhost:8000/v1",
                  vllm_model="meta-llama/Meta-Llama-3-8B-Instruct",
                  ollama_model='llama3',
