@@ -77,7 +77,7 @@ def load_json_metadata(path):
     return obj
 
 
-def get_chunks(file_name, chunk_size=2500, chunk_overlap=0):
+def get_chunks(file_name, chunk_size=500, chunk_overlap=0):
     if not os.path.isfile(file_name):
         print(f"Error: File {file_name} does not exist- no chunks extracted")
         return []

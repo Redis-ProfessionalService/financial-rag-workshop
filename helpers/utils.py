@@ -10,8 +10,7 @@ def get_llm(local_llm_engine='vllm',
             vllm_model="meta-llama/Meta-Llama-3-8B-Instruct",
             ollama_model='llama3',
             temperature=0,
-            model_kwargs=None
-            ):
+            model_kwargs=None):
     if model_kwargs is None:
         model_kwargs = {}
     if local_llm_engine == 'vllm':
@@ -20,7 +19,7 @@ def get_llm(local_llm_engine='vllm',
             openai_api_base=vllm_url,
             model_name=vllm_model,
             temperature= temperature,
-            model_kwargs=model_kwargs,
+            model_kwargs=model_kwargs
         )
         print(f"Created VLLMOpenAI on using {vllm_model} served from {vllm_url}")
         return vllm
@@ -42,7 +41,7 @@ def get_chat_llm(local_llm_engine='vllm',
             model=vllm_model,
             openai_api_key="EMPTY",
             openai_api_base=vllm_url,
-            temperature=temperature,
+            temperature=temperature
         )
         print(f"Created VLLM ChatOpenAI on using {vllm_model} served from {vllm_url}")
         return chatVLLM
