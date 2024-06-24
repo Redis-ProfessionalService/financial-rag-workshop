@@ -26,7 +26,7 @@ def get_llm(local_llm_engine='vllm',
     #We default to Ollama
     else:
         llm = Ollama(model=ollama_model)
-        print(f"Created Ollama on using {ollama_model} served locally")
+        print(f"Created Ollama using {ollama_model} served locally")
         return llm
 
 
@@ -43,17 +43,17 @@ def get_chat_llm(local_llm_engine='vllm',
             openai_api_base=vllm_url,
             temperature=temperature
         )
-        print(f"Created VLLM ChatOpenAI on using {vllm_model} served from {vllm_url}")
+        print(f"Created VLLM ChatOpenAI using {vllm_model} served from {vllm_url}")
         return chatVLLM
     #We default to Ollama
     else:
         if format is None:
             chat_llm = ChatOllama(model=ollama_model, temperature=temperature)
-            print(f"Created ChatOllama on using {ollama_model} served locally")
+            print(f"Created ChatOllama using {ollama_model} served locally")
             return chat_llm
         else:
             chat_llm = ChatOllama(model=ollama_model, temperature=temperature, format=format)
-            print(f"Created ChatOllama on using {ollama_model} with format={format} served locally")
+            print(f"Created ChatOllama using {ollama_model} with format={format} served locally")
             return chat_llm
 
 
