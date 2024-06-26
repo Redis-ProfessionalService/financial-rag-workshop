@@ -1,0 +1,17 @@
+{
+    "Ticker": "BA",
+    "Name": "BOEING",
+    "Sector": "Industrials",
+    "Asset Class": "Equity",
+    "Market Value": "29,895,310.11",
+    "Weight (%)": 0.28,
+    "Notional Value": "29,895,310.11",
+    "Shares": "156,939.00",
+    "Price": "190.49",
+    "Location": "United States",
+    "Exchange": "New York Stock Exchange Inc.",
+    "Currency": "USD",
+    "FX Rate": 1.0,
+    "Market Currency": "USD",
+    "Accrual Date": "-"
+}

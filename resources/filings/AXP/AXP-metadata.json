@@ -1,0 +1,17 @@
+{
+    "Ticker": "AXP",
+    "Name": "AMERICAN EXPRESS",
+    "Sector": "Financials",
+    "Asset Class": "Equity",
+    "Market Value": "25,476,237.00",
+    "Weight (%)": 0.24,
+    "Notional Value": "25,476,237.00",
+    "Shares": "172,428.00",
+    "Price": "147.75",
+    "Location": "United States",
+    "Exchange": "New York Stock Exchange Inc.",
+    "Currency": "USD",
+    "FX Rate": 1.0,
+    "Market Currency": "USD",
+    "Accrual Date": "-"
+}

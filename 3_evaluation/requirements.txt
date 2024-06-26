@@ -1,0 +1,23 @@
+# same as root
+python-dotenv
+tiktoken
+langchain
+langchain-community
+unstructured[pdf]
+sentence-transformers
+pandas
+pdf2image
+spacy
+langgraph
+redis
+redisvl
+langchain-openai
+openai
+# for evaluation specifically
+ragas
+
+# Optional for non-openai testset creation
+llama-index
+llama-index-embeddings-huggingface
+llama-index-llms-ollama
+llama-index-embeddings-instructor
