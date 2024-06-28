@@ -15,6 +15,7 @@ langchain-openai
 openai
 # for evaluation specifically
 ragas
+vllm
 
 # Optional for non-openai testset creation
 llama-index
