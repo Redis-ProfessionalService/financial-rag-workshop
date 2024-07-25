@@ -93,7 +93,10 @@ def get_chunks(file_name, chunk_size=500, chunk_overlap=0):
         print(f"Error chunking {file_name} skipping")
         return []
 
+
 import uuid
+
+
 def add_embeddings_for_chunks(chunks_to_process, shared_obj_to_load, doc_type, embeddings):
     chunk_objs_to_load = []
     for i, chunk in enumerate(chunks_to_process):

@@ -15,6 +15,21 @@
 # ⚡ Introduction to Vector Search in Redis
 [Redis](https://redis.com), widely recognized for its low-latency performance, extends beyond traditional noSQL databases. It's uniquely suited for tasks like caching, session management, job queuing, and JSON storage. With enhanced Search+Query features, Redis emerges as a performant [Vector Database](https://redis.com/solutions/use-cases/vector-database) supporting Vector Search over unstructured data encoded as embeddings.
 
+### Notebook guide 
+
+| Notebook folder                                      | Notebook                                                                                                                                                            | Description                                                                                                                                                | 
+|------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|[Getting Started](./1_getting_started)                | [redis-py intro](./1_getting_started/01-redis-py.ipynb)                                                                                                             | An introduction to redis-py package for vector search                                                                                                      |
+|                                                      | [redisVL intro](./1_getting_started/02-redisvl.ipynb)                                                                                                               | An introduction to redisVL package for vector search                                                                                                       |
+|                                                      | [Basic RAG with Redis](./1_getting_started/03-basic-RAG-langchain.ipynb)                                                                                            | Simple single-document RAG with basic Redis vector and hybrid search                                                                                       |
+|[RAG Patterns with Redis](./2_RAG_patterns_with_redis) | [Multi-document RAG with Redis and Langchain](./2_RAG_patterns_with_redis/04-multi-document-RAG-langchain.ipynb)                                                   | Multi-document Single-index RAG with LangChain and Redis Hybrid Search                                                                                     |
+|                                                      | [Multi-document Agentic RAG with Redis, Langchain and Langgraph](./2_RAG_patterns_with_redis/05-multi-document-langgraph_agentic_RAG_with_OpenAI.ipynb)             | Multi-document RAG based on LangGraph and Redis Retrieval Agent using OpenAI LLMs                                                                          |
+|                                                      | [Multi-document React Agentic RAG with Redis, Langchain and Langgraph](./2_RAG_patterns_with_redis/06-multi-document-langgraph_react_agentic_RAG.ipynb)             | Multi-document RAG based on LangGraph with Redis Retrieval Agent using React agents and local LLMs (served via Ollama and vLLM)                            |
+|                                                      | [Multi-document Query Understanding RAG with Redis, Langchain and Langgraph](./2_RAG_patterns_with_redis/07-multi-document-langgraph_query_understanding_RAG.ipynb) | Multi-document RAG based on LangGraph with Query Understanding and Redis Retrieval Agents and local LLMs (served via Ollama and vLLM)                      |
+|                                                      | [Ask From Your Structured Data](./2_RAG_patterns_with_redis/08-ask-from-structured-data.ipynb)                                                                      | A notebook that introcduces the idea of using LLMs to extract/augment answers from structured data and providing tips for Redis Query Translation using Redis Copilot |
+|[Evaluation](./3_evaluation)                          | [RAGAS Evaluation](./3_evaluation/ragas.ipynb)                                                                                                                      | Introducing RAGS Evaluation framework                                                                                                                      |
+
+
 ### Installation
 
 #### Local Ollama LLM
@@ -61,15 +76,13 @@ folder of this repo.
 
 #### Provide NLTK Data
 in the `.env` file please add the full path for `NLTK_DATA` and point it to the directory that we have provided in the 
-`{path_to_this_repo}models/nltk_data`
-
+`{path_to_this_repo}/models/nltk_data`
 
 
 ### Notes
 (1) It must be noted that much of the quality of the results depends very much on the embedding model that is used 
 for representing the data in vector space in your domain. Here we use a very simple embedding model that represents text 
-in a vector of `384` dimensions. Other BERT-driven embedding models would try to capture more nuances of text in `768` 
-dimensions. And OpenAI embedding models are in `1536` dimension. We recommend using a proper domain-specific 
+in a vector of `384` dimensions. We recommend using a proper domain-specific 
 embedding model for your use case for better results.
 
 (2) The same advice applies for the LLMs you use for specific tasks. Here we use a general llama3 model for generation 
@@ -79,9 +92,7 @@ in the finance space was [BloombergGPT](https://arxiv.org/abs/2303.17564).
 
 (3) And finally, be advised that we have used the base `llama3` LLM for all of our tasks, including some classification 
 and planning for next action and not just only generation part of the RAG patterns. 
-At this point in the evolution of LLMs this is not advised.
-
-<img src="assets/GenAI-usecases.png" alt="GenAI" width="400"/>
+Please make sure to evaluate each component separately and based on the LLM you will use for that task
 
 
 
