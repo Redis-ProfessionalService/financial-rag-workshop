@@ -7,14 +7,15 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import UnstructuredFileLoader
 from unstructured.partition.pdf import partition_pdf
 import nltk
+import uuid
+
 
 warnings.filterwarnings("ignore")
 dir_path = os.getcwd()
 parent_directory = os.path.dirname(dir_path)
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 os.environ["ROOT_DIR"] = parent_directory
-#print(dir_path)
-#print(parent_directory)
+
 
 filings_data_path = f"{parent_directory}/resources/filings"
 earning_calls_data_path = f"{parent_directory}/resources/earning_calls"
@@ -92,9 +93,6 @@ def get_chunks(file_name, chunk_size=500, chunk_overlap=0):
     except Exception as e:
         print(f"Error chunking {file_name} skipping")
         return []
-
-
-import uuid
 
 
 def add_embeddings_for_chunks(chunks_to_process, shared_obj_to_load, doc_type, embeddings):

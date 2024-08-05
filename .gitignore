@@ -3,3 +3,6 @@
 venv/
 .DS_Store
 .env.local
+__pycache__/
+.ipynb_checkpoints
+.git-credentials
