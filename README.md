@@ -25,7 +25,7 @@
 |[RAG Patterns with Redis](./2_RAG_patterns_with_redis) | [Multi-document RAG with Redis and Langchain](./2_RAG_patterns_with_redis/04-multi-document-RAG-langchain.ipynb)                                                   | Multi-document Single-index RAG with LangChain and Redis Hybrid Search                                                                                     |
 |                                                      | [Multi-document Agentic RAG with Redis, Langchain and Langgraph](./2_RAG_patterns_with_redis/05-multi-document-langgraph_agentic_RAG_with_OpenAI.ipynb)             | Multi-document RAG based on LangGraph and Redis Retrieval Agent using OpenAI LLMs                                                                          |
 |                                                      | [Multi-document React Agentic RAG with Redis, Langchain and Langgraph](./2_RAG_patterns_with_redis/06-multi-document-langgraph_react_agentic_RAG.ipynb)             | Multi-document RAG based on LangGraph with Redis Retrieval Agent using React agents and local LLMs (served via Ollama and vLLM)                            |
-|                                                      | [Multi-document Query Understanding RAG with Redis, Langchain and Langgraph](./2_RAG_patterns_with_redis/07-multi-document-langgraph_query_understanding_RAG.ipynb) | Multi-document RAG based on LangGraph with Query Understanding and Redis Retrieval Agents and local LLMs (served via Ollama and vLLM)                      |
+|                                                      | [Multi-document Query Analysis RAG with Redis, Langchain and Langgraph](./2_RAG_patterns_with_redis/07-multi-document-langgraph_query_analysis_RAG.ipynb) | Multi-document RAG based on LangGraph with Query Analysis and Redis Retrieval Agents and local LLMs (served via Ollama and vLLM)                      |
 |                                                      | [Ask From Your Structured Data](./2_RAG_patterns_with_redis/08-ask-from-structured-data.ipynb)                                                                      | A notebook that introcduces the idea of using LLMs to extract/augment answers from structured data and providing tips for Redis Query Translation using Redis Copilot |
 |[Evaluation](./3_evaluation)                          | [RAGAS Evaluation](./3_evaluation/ragas.ipynb)                                                                                                                      | Introducing RAGAS Evaluation framework                                                                                                                      |
 
@@ -93,10 +93,3 @@ in the finance space was [BloombergGPT](https://arxiv.org/abs/2303.17564).
 (3) And finally, be advised that we have used the base `llama3` LLM for all of our tasks, including some classification 
 and planning for next action and not just only generation part of the RAG patterns. 
 Please make sure to evaluate each component separately and based on the LLM you will use for that task
-
-
-
-
-
-
-

@@ -5,14 +5,17 @@ from langchain_community.llms import VLLMOpenAI
 from langchain_openai import ChatOpenAI
 
 
-def get_llm(local_llm_engine='vllm',
-            vllm_url="http://localhost:8000/v1",
-            vllm_model="meta-llama/Meta-Llama-3-8B-Instruct",
-            ollama_model='llama3',
-            temperature=0,
-            model_kwargs=None):
+def get_llm(
+    local_llm_engine='vllm',
+    vllm_url="http://localhost:8000/v1",
+    vllm_model="meta-llama/Meta-Llama-3-8B-Instruct",
+    ollama_model='llama3',
+    temperature=0,
+    model_kwargs=None
+):
     if model_kwargs is None:
         model_kwargs = {}
+
     if local_llm_engine == 'vllm':
         vllm = VLLMOpenAI(
             openai_api_key="EMPTY",
@@ -23,19 +26,22 @@ def get_llm(local_llm_engine='vllm',
         )
         print(f"Created VLLMOpenAI on using {vllm_model} served from {vllm_url}")
         return vllm
-    #We default to Ollama
+
+    # default to Ollama
     else:
         llm = Ollama(model=ollama_model)
         print(f"Created Ollama using {ollama_model} served locally")
         return llm
 
 
-def get_chat_llm(local_llm_engine='vllm',
-                 vllm_url="http://localhost:8000/v1",
-                 vllm_model="meta-llama/Meta-Llama-3-8B-Instruct",
-                 ollama_model='llama3',
-                 temperature=0,
-                 format=None):
+def get_chat_llm(
+    local_llm_engine='vllm',
+    vllm_url="http://localhost:8000/v1",
+    vllm_model="meta-llama/Meta-Llama-3-8B-Instruct",
+    ollama_model='llama3',
+    temperature=0,
+    format=None
+):
     if local_llm_engine == 'vllm':
         chatVLLM = ChatOpenAI(
             model=vllm_model,
@@ -45,7 +51,8 @@ def get_chat_llm(local_llm_engine='vllm',
         )
         print(f"Created VLLM ChatOpenAI using {vllm_model} served from {vllm_url}")
         return chatVLLM
-    #We default to Ollama
+
+    # default to Ollama
     else:
         if format is None:
             chat_llm = ChatOllama(model=ollama_model, temperature=temperature)

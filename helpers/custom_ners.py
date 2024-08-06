@@ -2,6 +2,7 @@ from spacy.lang.en import English
 from ingestion import load_json_metadata
 from ingestion import get_sec_data
 
+
 # a simple toy rule-based NER just to demonstrate the use-case
 def build_custom_sec_ner():
     sec_data = get_sec_data()
@@ -25,11 +26,6 @@ def build_custom_sec_ner():
         ruler.add_patterns(patterns)
 
 
-nlp = English()
-ruler = nlp.add_pipe("entity_ruler", config={"validate": True})
-build_custom_sec_ner()
-
-
 def get_entities(query):
     doc = nlp(query)
     entities = []
@@ -40,6 +36,7 @@ def get_entities(query):
             "id": ent.ent_id_
         })
     return entities
+
 
 # Simple OR based query translation based on rudimentary NLP pre-processing
 def get_redis_filters(query):
@@ -55,3 +52,12 @@ def get_redis_filters(query):
         return " | ".join(filters)
     else:
         return None
+
+
+if __name__ == "__main__":
+
+    nlp = English()
+    ruler = nlp.add_pipe("entity_ruler", config={"validate": True})
+
+    # build the custom NER based on SEC dataset
+    build_custom_sec_ner()
