@@ -67,20 +67,10 @@ def get_chat_llm(
 
 
 def format_docs(docs):
-    companies = defaultdict(list)
+    clean_docs = []
     for doc in docs:
-        company_name = doc.metadata.get("company_name", "Additional Context")
-        companies[company_name].append(str(doc.page_content).replace("\n", " "))
-
-    result = []
-    for company, contents in companies.items():
-        if company == "Additional Context":
-            result.append(company)
-        else:
-            result.append(f"Company: {company}")
-        result.append("\n".join(contents))
-
-    return "\n\n".join(result)
+        clean_docs.append(str(doc.page_content).replace("\n", " "))
+    return clean_docs
 
 
 def create_langchain_schemas_from_redis_schema(redis_yschema):
